@@ -263,11 +263,16 @@
 
     // ✅ Blocco all’avvio se ha già girato
     window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('hasSpun') === 'true') {
-        document.getElementById("spinButton").disabled = true;
-        document.getElementById("message").textContent = "Hai già girato la ruota!";
-      }
-    });
+  if (localStorage.getItem('hasSpun') === 'true') {
+    document.getElementById("spinButton").disabled = true;
+    document.getElementById("message").textContent = "";
+
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popupMessage");
+    popupMessage.textContent = "Hai già girato la ruota. Bevine un drink e riprova.";
+    popup.style.display = "block";
+  }
+});
 
     function spin() {
       if (isSpinning || localStorage.getItem('hasSpun') === 'true') return;
